@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/MainScreen"
+            android:icon="@drawable/messsorv2"
+            android:title="Ekran Główny"
+            />
+        <item
+            android:id="@+id/robot_state"
+            android:icon="@drawable/sensor_icon"
+            android:title="Stan robota" />
+        <item
+            android:id="@+id/ManualControll"
+            android:icon="@drawable/ic_joystick"
+            android:title="Ster. manualne" />
+        <item
+            android:id="@+id/CrawlControll"
+            android:icon="@drawable/ic_step"
+            android:title="Kroczenie" />
+        <item
+            android:id="@+id/Accelerometr"
+            android:icon="@drawable/ic_tablet"
+            android:title="Akcelerometr" />
+    </group>
+
+    <item android:title="Pozostałe">
+        <menu>
+            <item
+                android:id="@+id/Settings"
+                android:icon="@drawable/ic_settings"
+                android:title="Ustawienia" />
+            <item
+                android:id="@+id/CloseApp"
+                android:icon="@drawable/ic_power"
+                android:title="Zamknij aplikację" />
+        </menu>
+    </item>
+
+</menu>

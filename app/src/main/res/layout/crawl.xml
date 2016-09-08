@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Kroczenie "
+        android:id="@+id/textView14"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:theme="@style/AppTheme"
+        android:transitionName="@string/abc_action_bar_up_description"
+        style="@style/Base.TextAppearance.AppCompat.Title"
+        android:textAlignment="center"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/black"
+        android:layout_alignParentTop="true" />
+
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_crawl"
+        android:background="@android:drawable/btn_dropdown"
+        android:popupBackground="@android:color/background_light"
+        android:entries="@array/lista_komend_kroczenie"
+        android:minWidth="?android:attr/listPreferredItemHeightLarge"
+        android:dropDownWidth="match_parent"
+        android:dropDownSelector="@drawable/side_nav_bar"
+        android:textAlignment="center"
+        android:layout_below="@+id/textView15"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Wybierz funkcję:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView15"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        android:textAlignment="center"
+        android:textColor="?android:attr/textColorTertiary"
+        android:layout_below="@+id/textView14"
+        android:layout_alignParentStart="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/grzybek"
+        android:id="@+id/emergency_STOP_crawl"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_above="@+id/spinner_crawl"
+        android:layout_alignParentEnd="true" />
+
+
+
+
+    <TextView
+        android:text="Wpisz parametry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Parameters"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+
+        android:textSize="24sp"
+        android:textAlignment="textStart"
+        android:textStyle="normal|bold"
+        android:textColor="?android:attr/textColorTertiary"
+        android:layout_above="@+id/Tabela"
+        android:layout_alignParentStart="true" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Tabela"
+
+        android:layout_above="@+id/send_button_robotstate"
+        android:layout_alignParentStart="true">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="Przesunięcie X [m]"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textX"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="24sp"
+                android:textColor="?android:attr/textColorTertiary" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/setX"
+                android:inputType="numberDecimal"
+                android:textColor="?android:attr/textColorTertiary"
+                android:text="0.0"
+                android:textAlignment="center"
+                android:singleLine="true" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minusX"
+                android:layout_alignBaseline="@+id/plusX"
+                android:layout_alignBottom="@+id/plusX"
+                android:layout_toEndOf="@+id/plusX" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/plusX"
+                android:layout_alignTop="@+id/Tabela"
+                android:layout_alignEnd="@+id/Tabela" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="Przesunięcie Y [m]"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textY"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="24sp"
+                android:textColor="?android:attr/textColorTertiary" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/setY"
+                android:inputType="numberDecimal"
+                android:textColor="?android:attr/textColorTertiary"
+                android:text="0.0"
+                android:textAlignment="center" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minusY"
+                android:layout_alignBaseline="@+id/plusX"
+                android:layout_alignBottom="@+id/plusX"
+                android:layout_toEndOf="@+id/plusX" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/plusY"
+                android:layout_alignTop="@+id/Tabela"
+                android:layout_alignEnd="@+id/Tabela" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="Przesunięcie Z [m]"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textZ"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="24sp"
+                android:textColor="?android:attr/textColorTertiary" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/setZ"
+                android:textColor="?android:attr/textColorTertiary"
+                android:text="0.0"
+                android:textAlignment="center" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minusZ"
+                android:layout_alignBaseline="@+id/plusX"
+                android:layout_alignBottom="@+id/plusX"
+                android:layout_toEndOf="@+id/plusX" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/plusZ"
+                android:layout_alignTop="@+id/Tabela"
+                android:layout_alignEnd="@+id/Tabela" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="Obrót wokoł osi X [rad]"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textAlfa"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="24sp"
+                android:textColor="?android:attr/textColorTertiary" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/setAlfa"
+                android:textColor="?android:attr/textColorTertiary"
+                android:text="0.0"
+                android:textAlignment="center" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minusAlfa"
+                android:layout_alignBaseline="@+id/plusX"
+                android:layout_alignBottom="@+id/plusX"
+                android:layout_toEndOf="@+id/plusX" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/plusAlfa"
+                android:layout_alignTop="@+id/Tabela"
+                android:layout_alignEnd="@+id/Tabela" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="Obrót wokół osi Y [rad]"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textBeta"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="24sp"
+                android:textColor="?android:attr/textColorTertiary" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/setBeta"
+                android:inputType="numberDecimal"
+                android:textColor="?android:attr/textColorTertiary"
+                android:text="0.0"
+                android:textAlignment="center" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minusBeta"
+                android:layout_alignBaseline="@+id/plusX"
+                android:layout_alignBottom="@+id/plusX"
+                android:layout_toEndOf="@+id/plusX" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/plusBeta"
+                android:layout_alignTop="@+id/Tabela"
+                android:layout_alignEnd="@+id/Tabela" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="Obrót wokół osi Z [rad]"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textGamma"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="24sp"
+                android:textColor="?android:attr/textColorTertiary" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/setGamma"
+                android:textColor="?android:attr/textColorTertiary"
+                android:text="0.0"
+                android:textAlignment="center" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minusGamma"
+                android:layout_alignBaseline="@+id/plusX"
+                android:layout_alignBottom="@+id/plusX"
+                android:layout_toEndOf="@+id/plusX" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/plusGamma"
+                android:layout_alignTop="@+id/Tabela"
+                android:layout_alignEnd="@+id/Tabela" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="Prędkość [%]"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textSpeed"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="24sp"
+                android:textColor="?android:attr/textColorTertiary" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/setSpeed"
+                android:text="0.5"
+                android:textColor="?android:attr/textColorTertiary"
+                android:textAlignment="center" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minusSpeed"
+                android:layout_alignBaseline="@+id/plusX"
+                android:layout_alignBottom="@+id/plusX"
+                android:layout_toEndOf="@+id/plusX" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/plusSpeed"
+                android:layout_alignTop="@+id/Tabela"
+                android:layout_alignEnd="@+id/Tabela" />
+
+        </TableRow>
+    </TableLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/messorv1"
+        android:id="@+id/send_button_robotstate"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <Switch
+        android:text="Auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/auto_switch_crawl"
+        android:layout_above="@+id/send_button_robotstate"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="zeruj wartości"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/zero_crawl"
+        android:layout_below="@+id/Tabela"
+        android:layout_alignEnd="@+id/Tabela" />
+</RelativeLayout>

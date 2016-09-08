@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="dstAddress"
+        android:layout_below="@+id/pokaz_tekst"
+        android:layout_centerHorizontal="true"
+        android:text="10.0.0.1"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/port"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="dstPort"
+        android:layout_below="@+id/textView7"
+        android:layout_alignParentStart="true"
+        android:text="2426"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/connect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Połącz"
+        android:layout_below="@+id/port"
+        android:layout_alignParentLeft="true"
+        />
+
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Anuluj"
+        android:layout_below="@+id/connect"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Port"
+        android:id="@+id/textView7"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/address"
+        android:layout_alignEnd="@+id/pokaz_tekst"
+        android:layout_alignStart="@+id/pokaz_tekst" />
+
+    <TextView
+        android:text="Status:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/clear"
+        android:layout_alignEnd="@+id/response"
+        android:id="@+id/textView12"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/response"
+        android:text="rozłączono"
+        android:layout_below="@+id/textView12"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="IP robota"
+        android:id="@+id/pokaz_tekst"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="AHRS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ahrsbtn"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Robot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/messorbtn"
+        android:layout_below="@+id/textView17"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Uruchom program robota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView17"
+        android:layout_below="@+id/ahrsbtn"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Włącz AHRS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/textView7" />
+
+</RelativeLayout>

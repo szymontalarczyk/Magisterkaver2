@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer"
+        app:itemTextAppearance="@style/TextAppearance.AppCompat.Large"
+        app:itemIconTint="@android:color/black"
+        android:measureAllChildren="false"
+        android:nestedScrollingEnabled="false" />
+
+    <fragment class="com.example.szymon.messor.MainScreen"
+        android:id="@+id/MainScreenFragment"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"></fragment>
+
+
+    <fragment class="com.example.szymon.messor.ManualControll"
+        android:id="@+id/ManualControllFragment"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"></fragment>
+
+    <fragment class="com.example.szymon.messor.Crawl"
+        android:id="@+id/CrawlFragment"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"></fragment>
+
+    <fragment class="com.example.szymon.messor.RobotState"
+        android:id="@+id/RobotStateFragment"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"></fragment>
+    <fragment class="com.example.szymon.messor.Settings_Fragment"
+        android:id="@+id/SettingFragment"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"></fragment>
+
+</android.support.v4.widget.DrawerLayout>

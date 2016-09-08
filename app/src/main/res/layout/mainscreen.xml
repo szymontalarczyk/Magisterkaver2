@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="IP urządzenia"
+        android:id="@+id/Ip_view"
+        android:layout_marginTop="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="16sp"
+        android:textColor="?android:attr/textColorTertiary" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/showIP"
+        android:autoText="true"
+        android:text="IP"
+        android:layout_below="@+id/Ip_view"
+        android:layout_alignParentRight="true"
+        android:textSize="16sp"
+        android:textColor="?android:attr/textColorTertiary" />
+
+    <TextView
+        android:text="Szymon Talarczyk, Paweł Jeleniewski"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView11"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="24dp"
+        android:textAlignment="textEnd"
+        android:textSize="16sp"
+        android:textColor="?android:attr/textColorTertiary" />
+
+    <TextView
+        android:text="Interfejs operatora sześcionożnego robota kroczącego na urządzeniu z systemem Android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView10"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="?android:attr/textColorTertiary"
+        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/textView13" />
+
+    <TextView
+        android:text="Politechnika Poznańska"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="?android:attr/textColorTertiary"
+        android:layout_below="@+id/showIP"
+        android:layout_alignEnd="@+id/textView3" />
+
+    <TextView
+        android:text="Instytut Automatyki i Inżynierii Informatycznej"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="?android:attr/textColorTertiary"
+        android:layout_below="@+id/textView8"
+        android:layout_toStartOf="@+id/showIP"
+        android:layout_marginEnd="17dp" />
+
+    <TextView
+        android:text="Praca dyplomowa magisterska:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView9"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="?android:attr/textColorTertiary"
+        android:layout_above="@+id/textView10"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Promotor : dr inż. Dominik Belter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView13"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="?android:attr/textColorTertiary"
+        android:layout_below="@+id/textView10"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="78dp" />
+
+
+</RelativeLayout>

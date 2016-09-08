@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Wybierz funkcję:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView16"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        android:textAlignment="center"
+        android:textColor="?android:attr/textColorTertiary"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentStart="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/grzybek"
+        android:id="@+id/emergency_STOP_robotstate"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_above="@+id/spinner_rc"
+        android:layout_alignParentEnd="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/messorv1"
+        android:id="@+id/send_button_robotstate"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <Switch
+        android:text="Auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch_robotstate"
+        android:layout_above="@+id/send_button_robotstate"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Odczyt stanu robota"
+        android:id="@+id/textView6"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:theme="@style/AppTheme"
+        android:transitionName="@string/abc_action_bar_up_description"
+        style="@style/Base.TextAppearance.AppCompat.Title"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Odebrane bajty :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView21"
+        android:layout_below="@+id/spinner_rc"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/response_robotstate"
+        android:layout_below="@+id/spinner_rc"
+        android:layout_toEndOf="@+id/textView21"
+        android:layout_marginStart="14dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_rc"
+        android:background="@android:drawable/btn_dropdown"
+        android:popupBackground="@android:color/background_light"
+        android:entries="@array/lista_komend_odczyt_stanu_robota"
+        android:minWidth="?android:attr/listPreferredItemHeightLarge"
+        android:dropDownWidth="match_parent"
+        android:dropDownSelector="@drawable/side_nav_bar"
+        android:textAlignment="center"
+        android:layout_below="@+id/textView16"
+        android:layout_alignParentStart="true" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/table"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="textdata0                "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textdata0"
+                android:textSize="30sp" />
+
+            <TextView
+                android:text="dataview0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dataview0"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/tableLayout8"
+                android:layout_alignTop="@+id/tableLayout8">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </TableLayout>
+
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="textdata1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textdata1"
+                android:textSize="30sp" />
+
+            <TextView
+                android:text="dataview1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dataview1"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="textdata2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textdata2"
+                android:textSize="30sp" />
+
+            <TextView
+                android:text="dataview2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dataview2"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="textdata3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textdata3"
+                android:textSize="30sp" />
+
+            <TextView
+                android:text="dataview3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dataview3"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="textdata4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textdata4"
+                android:textSize="30sp" />
+
+            <TextView
+                android:text="dataview4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dataview4"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="textdata5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textdata5"
+                android:textSize="30sp" />
+
+            <TextView
+                android:text="dataview5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dataview5"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="textdata6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textdata6"
+                android:textSize="30sp" />
+
+            <TextView
+                android:text="dataview6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dataview6"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="textdata7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textdata7"
+                android:textSize="30sp" />
+
+            <TextView
+                android:text="dataview7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dataview7"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="Wybierz nogę nr. 0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseleg0"
+                android:textSize="30sp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:ems="10"
+                android:id="@+id/et_leg0"
+                android:text="0"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minusleg0" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/plusleg0" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="Wybierz nogę nr. 1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseleg1"
+                android:textSize="30sp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:ems="10"
+                android:id="@+id/et_leg1"
+                android:text="1"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minusleg1" />
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/plusleg1" />
+
+        </TableRow>
+
+
+
+
+
+
+
+    </TableLayout>
+
+</RelativeLayout>
