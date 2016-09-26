@@ -11,7 +11,9 @@
         android:layout_below="@+id/pokaz_tekst"
         android:layout_centerHorizontal="true"
         android:text="10.0.0.1"
-        android:inputType="numberDecimal" />
+
+        android:maxLines="1" />
+    //android:inputType="numberDecimal"
 
     <EditText
         android:id="@+id/port"
@@ -47,9 +49,10 @@
         android:text="Port"
         android:id="@+id/textView7"
         android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/address"
         android:layout_alignEnd="@+id/pokaz_tekst"
-        android:layout_alignStart="@+id/pokaz_tekst" />
+        android:layout_alignStart="@+id/pokaz_tekst"
+        android:layout_below="@+id/address"
+        android:textAlignment="center" />
 
     <TextView
         android:text="Status:"
@@ -76,7 +79,8 @@
         android:id="@+id/pokaz_tekst"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
 
     <Button
         android:text="AHRS"
@@ -111,5 +115,23 @@
         android:id="@+id/textView2"
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/textView7" />
+
+    <TextView
+        android:text="Uruchom ponownie robota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView22"
+        android:layout_below="@+id/messorbtn"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="REBOOT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rebootbtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textView22"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

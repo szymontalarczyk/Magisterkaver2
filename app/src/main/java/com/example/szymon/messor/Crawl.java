@@ -3,6 +3,7 @@ package com.example.szymon.messor;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
@@ -12,10 +13,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 
 public class Crawl extends Fragment implements AdapterView.OnItemSelectedListener {
@@ -28,14 +32,15 @@ public class Crawl extends Fragment implements AdapterView.OnItemSelectedListene
     View myView;
     Spinner spinner_crawl;
     ArrayAdapter adapter_crawl;
-    EditText x, y, z, alfa, beta, gamma, speed;
+    TextView x, y, z, alfa, beta, gamma, speed;
     FloatingActionButton sendbutton_crawl;
     FloatingActionButton emergency_crawl;
 
     static final float offset = (float) 0.01;
 
+    boolean was_tripod,was_wave;
 
-    int flaga;
+    int flaga=0;
     float x_send, y_send, z_send, alfa_send, beta_send, gamma_send, speed_send;
     Button plusx, plusy, plusz, plusalfa, plusbeta, plusgamma, plusspeed;
     Button minusx, minusy, minusz, minusalfa, minusbeta, minusgamma, minusspeed;
@@ -44,7 +49,7 @@ public class Crawl extends Fragment implements AdapterView.OnItemSelectedListene
     String Ip;
     int port;
 
-
+    RadioButton wave,tripod;
     TextView textdata1, textdata2, textdata3, textdata4, textdata5, textdata6;
 
     @Override
@@ -68,13 +73,13 @@ public class Crawl extends Fragment implements AdapterView.OnItemSelectedListene
         spinner_crawl.setAdapter(adapter_crawl);
         spinner_crawl.setOnItemSelectedListener(this);
 
-        x = (EditText) myView.findViewById(R.id.setX);
-        y = (EditText) myView.findViewById(R.id.setY);
-        z = (EditText) myView.findViewById(R.id.setZ);
-        alfa = (EditText) myView.findViewById(R.id.setAlfa);
-        beta = (EditText) myView.findViewById(R.id.setBeta);
-        gamma = (EditText) myView.findViewById(R.id.setGamma);
-        speed = (EditText) myView.findViewById(R.id.setSpeed);
+        x = (TextView) myView.findViewById(R.id.setX);
+        y = (TextView) myView.findViewById(R.id.setY);
+        z = (TextView) myView.findViewById(R.id.setZ);
+        alfa = (TextView) myView.findViewById(R.id.setAlfa);
+        beta = (TextView) myView.findViewById(R.id.setBeta);
+        gamma = (TextView) myView.findViewById(R.id.setGamma);
+        speed = (TextView) myView.findViewById(R.id.setSpeed);
 
         plusx = (Button) myView.findViewById(R.id.plusX);
         plusy = (Button) myView.findViewById(R.id.plusY);
@@ -128,17 +133,24 @@ public class Crawl extends Fragment implements AdapterView.OnItemSelectedListene
         plusspeed.setOnClickListener(buttons_listener);
         minusspeed.setOnClickListener(buttons_listener);
 
+        wave=(RadioButton)myView.findViewById(R.id.wave_step);
+        tripod=(RadioButton)myView.findViewById(R.id.tripod_step);
+
+        wave.setOnClickListener(radiobutton_listener);
+        tripod.setOnClickListener(radiobutton_listener);
 
         float zero = (float) 0.0;
 
-        x.setText(String.format("%.2f", zero));
-        y.setText(String.format("%.2f", zero));
-        z.setText(String.format("%.2f", zero));
-        alfa.setText(String.format("%.2f", zero));
-        beta.setText(String.format("%.2f", zero));
-        gamma.setText(String.format("%.2f", zero));
-        speed.setText(String.format("%.2f", 0.05));
+        x.setText(String.format("%.2f", zero)+"m");
+        y.setText(String.format("%.2f", zero)+"m");
+        z.setText(String.format("%.2f", zero)+"m");
+        alfa.setText(String.format("%.2f", zero)+"rad");
+        beta.setText(String.format("%.2f", zero)+"rad");
+        gamma.setText(String.format("%.2f", zero)+"rad");
+        speed.setText(String.format("%.2f", 0.05)+"%");
 
+        speed_send=(float)0.3;
+        speed.setText(String.format("%.2f", speed_send*100));
 
         return myView;
     }
@@ -149,6 +161,7 @@ public class Crawl extends Fragment implements AdapterView.OnItemSelectedListene
         TextView selected_option = (TextView) view;
         Toast.makeText(this.getActivity(), "Wybrano: " + selected_option.getText(), Toast.LENGTH_SHORT).show();
         zeroes();
+
 
 
 
@@ -169,12 +182,8 @@ public class Crawl extends Fragment implements AdapterView.OnItemSelectedListene
         public void onClick(View arg0) {
 
 
-            flaga = spinner_crawl.getSelectedItemPosition() + 25;
 
-
-
-            interfaceDataCommunicator.updateData(Ip, port, flaga, x_send, y_send, z_send, alfa_send, beta_send, gamma_send, speed_send, id);
-
+          interfaceDataCommunicator.updateData(Ip, port, flaga, x_send, y_send, z_send, alfa_send, beta_send, gamma_send, speed_send, id);
 
         }
     };
@@ -235,13 +244,14 @@ public class Crawl extends Fragment implements AdapterView.OnItemSelectedListene
                 interfaceDataCommunicator.updateData(Ip, port, flaga, x_send, y_send, z_send, alfa_send, beta_send, gamma_send, speed_send, id);
 
             }
-            x.setText(String.format("%.2f", x_send));
-            y.setText(String.format("%.2f", y_send));
-            z.setText(String.format("%.2f", z_send));
-            alfa.setText(String.format("%.2f", alfa_send));
-            beta.setText(String.format("%.2f", beta_send));
-            gamma.setText(String.format("%.2f", gamma_send));
-            speed.setText(String.format("%.2f", speed_send));
+
+            x.setText(String.format("%.2f", x_send)+" m");
+            y.setText(String.format("%.2f", y_send)+" m");
+            z.setText(String.format("%.2f", z_send)+" m");
+            alfa.setText(String.format("%.2f", alfa_send)+" rad");
+            beta.setText(String.format("%.2f", beta_send)+" rad");
+            gamma.setText(String.format("%.2f", gamma_send)+" rad");
+            speed.setText(String.format("%.2f", speed_send*100)+" %");
 
 
         }
@@ -262,12 +272,13 @@ public class Crawl extends Fragment implements AdapterView.OnItemSelectedListene
 
     void zeroes() {
 
-        x.setText("0,00");
-        y.setText("0,00");
-        z.setText("0,00");
-        alfa.setText("0,00");
-        beta.setText("0,00");
-        gamma.setText("0,00");
+        x.setText("0,00 m" );
+        y.setText("0,00 m");
+        z.setText("0,00 m");
+        alfa.setText("0,00 rad");
+        beta.setText("0,00 rad");
+        gamma.setText("0,00 rad");
+        speed.setText(String.format("%.2f", speed_send*100)+" %");
 
         x_send = 0;
         y_send = 0;
@@ -288,5 +299,53 @@ public class Crawl extends Fragment implements AdapterView.OnItemSelectedListene
 
     };
 
+    View.OnClickListener radiobutton_listener = new View.OnClickListener() {
 
+        public void onClick(View view) {
+
+            switch (view.getId()) {
+                case R.id.wave_step:
+                    if (wave.isChecked()) {
+                        tripod.setChecked(false);
+                        flaga = 26;
+                        interfaceDataCommunicator.updateData(Ip, port, 29, x_send, y_send, z_send, alfa_send, beta_send, gamma_send, speed_send, id);
+                        was_wave=true;
+if(was_tripod)
+{
+    interfaceDataCommunicator.updateData(Ip, port, 28, x_send, y_send, z_send, alfa_send, beta_send, gamma_send, speed_send, id);
+was_tripod=false;
+}
+
+
+
+                    }
+
+
+                    break;
+                case R.id.tripod_step:
+                    if (tripod.isChecked()) {
+                        wave.setChecked(false);
+                        flaga=25;
+                        interfaceDataCommunicator.updateData(Ip, port, 27, x_send, y_send, z_send, alfa_send, beta_send, gamma_send, speed_send, id);
+                        was_tripod=true;
+
+                        if(was_wave)
+                        {
+                            interfaceDataCommunicator.updateData(Ip, port, 30, x_send, y_send, z_send, alfa_send, beta_send, gamma_send, speed_send, id);
+was_wave=false;
+                        }
+
+
+                    }
+
+
+                    break;
+
+
+            }
+
+        }
+
+
+    };
 }

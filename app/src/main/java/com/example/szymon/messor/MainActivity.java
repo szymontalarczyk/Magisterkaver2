@@ -85,7 +85,7 @@ Toolbar toolbar = null;
 
         inputdata = new  byte[32];
         init();
-        dstAddress="10.0.0.1";
+        dstAddress="192.168.1.107";
         dstport=2426;
         MainScreen = new MainScreen();
         fragmentManager.beginTransaction().replace(R.id.content_frame, MainScreen).commit();
@@ -288,7 +288,7 @@ Toolbar toolbar = null;
     public class MyClientTask extends AsyncTask<Void, Void,Void> {
 
         MyClientTask(String addr, int port,byte[] data) {
-            dstAddress = "10.0.0.1";
+            dstAddress="192.168.1.107";
             dstPort = 2426;
 
 
@@ -464,6 +464,12 @@ Toolbar toolbar = null;
             SSH_MESSOR messor = new SSH_MESSOR();
             messor.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         }
+        if(id==8)
+        {
+
+            SSH_REBOOT reboot = new SSH_REBOOT();
+            reboot.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        }
         //zerowanie inputdatastream
         for(int i = 0;i<32;i++)
         {
@@ -489,7 +495,8 @@ Toolbar toolbar = null;
         protected Void doInBackground(Void... arg0) {
             try
             {
-                String command = "'/home/szymon/Desktop/Untitled Folder/robot-build/AHRS'";
+                //String command = "'/home/szymon/Desktop/Untitled Folder/robot-build/AHRS'";
+                String command = " '/home/robot/robot2/AHRS' ";
                 String host = "10.0.0.1";
                 String user = "robot";
                 String password = "messor";
@@ -502,19 +509,40 @@ Toolbar toolbar = null;
                 session.setPassword(password);
                 session.connect();
 
-                Channel channel = session.openChannel("exec");
+                /*Channel channel = session.openChannel("exec");
                 ((ChannelExec)channel).setCommand(command);
                 ((ChannelExec)channel).setPty(true);
+
                 channel.setInputStream(null);
                 ((ChannelExec)channel).setErrStream(System.err);
 
                 InputStream input = channel.getInputStream();
+                channel.connect();*/
+
+                Channel channel=session.openChannel("exec");
+
+                // man sudo
+                //   -S  The -S (stdin) option causes sudo to read the password from the
+                //       standard input instead of the terminal device.
+                //   -p  The -p (prompt) option allows you to override the default
+                //       password prompt and use a custom one.
+                ((ChannelExec)channel).setCommand("sudo -S -p '' "+command);
+
+
+                InputStream in=channel.getInputStream();
+                OutputStream out=channel.getOutputStream();
+                ((ChannelExec)channel).setErrStream(System.err);
+
                 channel.connect();
+                String sudo_pass="messor";
+
+                out.write((sudo_pass+"\n").getBytes());
+                out.flush();
 
                 System.out.println("Channel Connected to machine " + host + " server with command: " + command );
 
                 try{
-                    InputStreamReader inputReader = new InputStreamReader(input);
+                    InputStreamReader inputReader = new InputStreamReader(in);
                     BufferedReader bufferedReader = new BufferedReader(inputReader);
                     String line = null;
 
@@ -557,7 +585,8 @@ Toolbar toolbar = null;
         protected Void doInBackground(Void... arg0) {
             try
             {
-                String command = "'/home/szymon/Desktop/Untitled Folder/robot-build/Messor' ";
+                //String command = "'/home/szymon/Desktop/Untitled Folder/robot-build/Messor' ";
+                String command = " '/home/robot/robot2/Messor' ";
                 String host = "10.0.0.1";
                 String user = "robot";
                 String password = "messor";
@@ -570,19 +599,129 @@ Toolbar toolbar = null;
                 session.setPassword(password);
                 session.connect();
 
-                Channel channel = session.openChannel("exec");
+                /*Channel channel = session.openChannel("exec");
                 ((ChannelExec)channel).setCommand(command);
                 ((ChannelExec)channel).setPty(true);
                 channel.setInputStream(null);
                 ((ChannelExec)channel).setErrStream(System.err);
 
                 InputStream input = channel.getInputStream();
+                channel.connect();*/
+
+                Channel channel=session.openChannel("exec");
+
+                // man sudo
+                //   -S  The -S (stdin) option causes sudo to read the password from the
+                //       standard input instead of the terminal device.
+                //   -p  The -p (prompt) option allows you to override the default
+                //       password prompt and use a custom one.
+                ((ChannelExec)channel).setCommand("sudo -S -p '' "+command);
+
+
+                InputStream in=channel.getInputStream();
+                OutputStream out=channel.getOutputStream();
+                ((ChannelExec)channel).setErrStream(System.err);
+
                 channel.connect();
+                String sudo_pass="messor";
+
+                out.write((sudo_pass+"\n").getBytes());
+                out.flush();
 
                 System.out.println("Channel Connected to machine " + host + " server with command: " + command );
 
                 try{
-                    InputStreamReader inputReader = new InputStreamReader(input);
+                    //InputStreamReader inputReader = new InputStreamReader(input);
+                    InputStreamReader inputReader = new InputStreamReader(in);
+                    BufferedReader bufferedReader = new BufferedReader(inputReader);
+                    String line = null;
+
+                    while((line = bufferedReader.readLine()) != null){
+                        System.out.println(line);
+                    }
+                    bufferedReader.close();
+                    inputReader.close();
+                }catch(IOException ex){
+                    ex.printStackTrace();
+                }
+
+                channel.disconnect();
+                session.disconnect();
+
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
+
+
+
+            return null;
+        }
+
+
+
+
+
+    }
+
+    public class SSH_REBOOT extends AsyncTask<Void, Void,Void> {
+
+
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            try
+            {
+                //String command = "'/home/szymon/Desktop/Untitled Folder/robot-build/AHRS'";
+                String command = " 'reboot' ";
+                String host = "10.0.0.1";
+                String user = "robot";
+                String password = "messor";
+
+                JSch jsch = new JSch();
+                Session session = jsch.getSession(user, host, 22);
+                Properties config = new Properties();
+                config.put("StrictHostKeyChecking", "no");
+                session.setConfig(config);;
+                session.setPassword(password);
+                session.connect();
+
+                /*Channel channel = session.openChannel("exec");
+                ((ChannelExec)channel).setCommand(command);
+                ((ChannelExec)channel).setPty(true);
+
+                channel.setInputStream(null);
+                ((ChannelExec)channel).setErrStream(System.err);
+
+                InputStream input = channel.getInputStream();
+                channel.connect();*/
+
+                Channel channel=session.openChannel("exec");
+
+                // man sudo
+                //   -S  The -S (stdin) option causes sudo to read the password from the
+                //       standard input instead of the terminal device.
+                //   -p  The -p (prompt) option allows you to override the default
+                //       password prompt and use a custom one.
+                ((ChannelExec)channel).setCommand("sudo -S -p '' "+command);
+
+
+                InputStream in=channel.getInputStream();
+                OutputStream out=channel.getOutputStream();
+                ((ChannelExec)channel).setErrStream(System.err);
+
+                channel.connect();
+                String sudo_pass="messor";
+
+                out.write((sudo_pass+"\n").getBytes());
+                out.flush();
+
+                System.out.println("Channel Connected to machine " + host + " server with command: " + command );
+
+                try{
+                    InputStreamReader inputReader = new InputStreamReader(in);
                     BufferedReader bufferedReader = new BufferedReader(inputReader);
                     String line = null;
 

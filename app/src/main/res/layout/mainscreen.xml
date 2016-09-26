@@ -28,7 +28,7 @@
         android:textColor="?android:attr/textColorTertiary" />
 
     <TextView
-        android:text="Szymon Talarczyk, Paweł Jeleniewski"
+        android:text="Promotor : dr inż. Dominik Belter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView11"
@@ -51,17 +51,6 @@
         android:layout_alignEnd="@+id/textView13" />
 
     <TextView
-        android:text="Politechnika Poznańska"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView8"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textColor="?android:attr/textColorTertiary"
-        android:layout_below="@+id/showIP"
-        android:layout_alignEnd="@+id/textView3" />
-
-    <TextView
         android:text="Instytut Automatyki i Inżynierii Informatycznej"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,7 +60,7 @@
         android:textColor="?android:attr/textColorTertiary"
         android:layout_below="@+id/textView8"
         android:layout_toStartOf="@+id/showIP"
-        android:layout_marginEnd="17dp" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:text="Praca dyplomowa magisterska:"
@@ -85,7 +74,7 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="Promotor : dr inż. Dominik Belter"
+        android:text="Autorzy: Szymon Talarczyk, Paweł Jeleniewski"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView13"
@@ -95,6 +84,17 @@
         android:layout_below="@+id/textView10"
         android:layout_alignParentStart="true"
         android:layout_marginTop="78dp" />
+
+    <TextView
+        android:text="Politechnika Poznańska"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="?android:attr/textColorTertiary"
+        android:layout_below="@+id/showIP"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>

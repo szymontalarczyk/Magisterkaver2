@@ -46,20 +46,42 @@ public class RobotState extends android.app.Fragment implements AdapterView.OnIt
     Handler timerHandler = new Handler();
     Runnable timerRunnable = new Runnable() {
 
+
+
         @Override
         public void run() {
             flaga = spinner_rs.getSelectedItemPosition()+10;
             response="odebrano  "+response_0 + "  " + response_1+ "  " + response_2+ "  " + response_3+ "  " + response_4+ "  " + response_5+ "  " + response_6+"  " + response_7;
-            set_response();
+            setup_response();
             rs_response.setText(response);
 
 
+            if(flaga==10) {
+                flaga = 0;
+            }
+            if(flaga==15)
+            {
+                flaga = 0;
+            }
+            if(flaga==16)
+                flaga=0;
+            if(flaga==17)
+                flaga=0;
+            if(flaga==18)
+                flaga=0;
+            if(flaga==19)
+                flaga=0;
+            if(flaga==20)
+                flaga=0;
+            if(flaga==21)
+                flaga=0;
 
 
+    interfaceDataCommunicator.updateData(Ip, port, flaga, x_send, y_send, z_send, alfa_send, beta_send, gamma_send, speed_send, id);
 
-            interfaceDataCommunicator.updateData(Ip, port, flaga, x_send, y_send, z_send, alfa_send, beta_send, gamma_send, speed_send, id);
+    timerHandler.postDelayed(this, 1);
 
-            timerHandler.postDelayed(this, 1);
+
 
         }
     };
@@ -225,9 +247,57 @@ public class RobotState extends android.app.Fragment implements AdapterView.OnIt
             response="odebrano  "+response_0 + "  " + response_1+ "  " + response_2+ "  " + response_3+ "  " + response_4+ "  " + response_5+ "  " + response_6+"  " + response_7;
 
 
+            switch (flaga){
+                case 10: {
+                 flaga=0;
+                    break;
+                }
+                case 15: {
+                    flaga=0;
+                    break;
+                }
+                case 16:
+                {
+                    flaga=0;
+                    break;
+                }
+
+                case 17:
+                {
+                    flaga=0;
+                    break;
+                }
+                case 18:
+                {
+                    flaga=0;
+                    break;
+                }
+                case 19:
+                {
+                    flaga=0;
+                    break;
+                }
+                case 20:
+                {
+                    flaga=0;
+                    break;
+                }
+                case 21:
+                {
+                    flaga=0;
+                    break;
+                }
+
+                default:
+                    flaga = spinner_rs.getSelectedItemPosition()+10;
+                    break;
+            }
+
 
             interfaceDataCommunicator.updateData(Ip, port, flaga, x_send, y_send, z_send, alfa_send, beta_send, gamma_send, speed_send, id);
-set_response();
+
+
+setup_response();
 
 
             rs_response.setText(response);
@@ -237,19 +307,75 @@ set_response();
     };
 
 
-void set_response()
+
+
+    void set_response()
+    {
+
+        dataresponse0.setText(String.valueOf(response_0));
+        dataresponse1.setText(String.valueOf(response_1));
+        dataresponse2.setText(String.valueOf(response_2));
+        dataresponse3.setText(String.valueOf(response_3));
+        dataresponse4.setText(String.valueOf(response_4));
+        dataresponse5.setText(String.valueOf(response_5));
+        dataresponse6.setText(String.valueOf(response_6));
+        dataresponse7.setText(String.valueOf(response_7));
+
+    }
+
+void setup_response()
+{
+    switch (flaga){
+    case 11: {
+    set_response_radians();
+    break;
+}
+    case 12: {
+    set_response_radians();
+    break;
+}
+    case 13:
+    {
+        set_response_current();
+break;
+    }
+
+    case 14:
+    {
+        set_response_current();
+        break;
+    }
+    default:
+        set_response();
+        break;
+}}
+
+void set_response_radians()
 {
 
-    dataresponse0.setText(String.valueOf(response_0));
-    dataresponse1.setText(String.valueOf(response_1));
-    dataresponse2.setText(String.valueOf(response_2));
-    dataresponse3.setText(String.valueOf(response_3));
-    dataresponse4.setText(String.valueOf(response_4));
-    dataresponse5.setText(String.valueOf(response_5));
-    dataresponse6.setText(String.valueOf(response_6));
-    dataresponse7.setText(String.valueOf(response_7));
+    dataresponse0.setText(String.valueOf(response_0)+" rad");
+    dataresponse1.setText(String.valueOf(response_1)+" rad");
+    dataresponse2.setText(String.valueOf(response_2)+" rad");
+    dataresponse3.setText(String.valueOf(response_3)+" rad");
+    dataresponse4.setText(String.valueOf(response_4)+" rad");
+    dataresponse5.setText(String.valueOf(response_5)+" rad");
+    dataresponse6.setText(String.valueOf(response_6)+" rad");
+    dataresponse7.setText(String.valueOf(response_7)+" rad");
 
 }
+    void set_response_current()
+    {
+
+        dataresponse0.setText(String.valueOf(response_0)+" mA");
+        dataresponse1.setText(String.valueOf(response_1)+" mA");
+        dataresponse2.setText(String.valueOf(response_2)+" mA");
+        dataresponse3.setText(String.valueOf(response_3)+" mA");
+        dataresponse4.setText(String.valueOf(response_4)+" mA");
+        dataresponse5.setText(String.valueOf(response_5)+" mA");
+        dataresponse6.setText(String.valueOf(response_6)+" mA");
+        dataresponse7.setText(String.valueOf(response_7)+" mA");
+
+    }
 static float zero = 0;
 void set_response_zero()
 {

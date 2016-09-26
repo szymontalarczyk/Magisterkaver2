@@ -84,7 +84,7 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:text="Przesunięcie X [m]"
+                android:text="Przesunięcie X"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textX"
@@ -92,7 +92,7 @@
                 android:textSize="24sp"
                 android:textColor="?android:attr/textColorTertiary" />
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -101,7 +101,8 @@
                 android:textColor="?android:attr/textColorTertiary"
                 android:text="0.0"
                 android:textAlignment="center"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textSize="18sp" />
 
             <Button
                 android:text="-"
@@ -127,7 +128,7 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:text="Przesunięcie Y [m]"
+                android:text="Przesunięcie Y "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textY"
@@ -135,7 +136,7 @@
                 android:textSize="24sp"
                 android:textColor="?android:attr/textColorTertiary" />
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -143,7 +144,8 @@
                 android:inputType="numberDecimal"
                 android:textColor="?android:attr/textColorTertiary"
                 android:text="0.0"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Button
                 android:text="-"
@@ -169,7 +171,7 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:text="Przesunięcie Z [m]"
+                android:text="Przesunięcie Z "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textZ"
@@ -177,7 +179,7 @@
                 android:textSize="24sp"
                 android:textColor="?android:attr/textColorTertiary" />
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
@@ -185,7 +187,8 @@
                 android:id="@+id/setZ"
                 android:textColor="?android:attr/textColorTertiary"
                 android:text="0.0"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Button
                 android:text="-"
@@ -211,7 +214,7 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:text="Obrót wokoł osi X [rad]"
+                android:text="Obrót wokoł osi X "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textAlfa"
@@ -219,7 +222,7 @@
                 android:textSize="24sp"
                 android:textColor="?android:attr/textColorTertiary" />
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
@@ -227,7 +230,8 @@
                 android:id="@+id/setAlfa"
                 android:textColor="?android:attr/textColorTertiary"
                 android:text="0.0"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Button
                 android:text="-"
@@ -253,7 +257,7 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:text="Obrót wokół osi Y [rad]"
+                android:text="Obrót wokół osi Y "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textBeta"
@@ -261,7 +265,7 @@
                 android:textSize="24sp"
                 android:textColor="?android:attr/textColorTertiary" />
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -269,7 +273,8 @@
                 android:inputType="numberDecimal"
                 android:textColor="?android:attr/textColorTertiary"
                 android:text="0.0"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Button
                 android:text="-"
@@ -295,7 +300,7 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:text="Obrót wokół osi Z [rad]"
+                android:text="Obrót wokół osi Z "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textGamma"
@@ -303,7 +308,7 @@
                 android:textSize="24sp"
                 android:textColor="?android:attr/textColorTertiary" />
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
@@ -311,7 +316,8 @@
                 android:id="@+id/setGamma"
                 android:textColor="?android:attr/textColorTertiary"
                 android:text="0.0"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Button
                 android:text="-"
@@ -337,7 +343,7 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:text="Prędkość [%]"
+                android:text="Prędkość "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textSpeed"
@@ -345,7 +351,7 @@
                 android:textSize="24sp"
                 android:textColor="?android:attr/textColorTertiary" />
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
@@ -353,7 +359,8 @@
                 android:id="@+id/setSpeed"
                 android:text="0.5"
                 android:textColor="?android:attr/textColorTertiary"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Button
                 android:text="-"

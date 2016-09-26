@@ -38,7 +38,7 @@ public InterfaceDataCommunicator interfaceDataCommunicator;
     TextView textResponse;
     EditText editTextAddress, editTextPort;
     Button buttonConnect, buttonClear;
-    Button AHRS,MESSOR;
+    Button AHRS,MESSOR, REBOOT;
     String Ip;
     int port;
 
@@ -66,6 +66,7 @@ public InterfaceDataCommunicator interfaceDataCommunicator;
         buttonClear = (Button) myView.findViewById(R.id.clear);
         AHRS=(Button)myView.findViewById(R.id.ahrsbtn);
         MESSOR=(Button)myView.findViewById(R.id.messorbtn);
+        REBOOT=(Button)myView.findViewById(R.id.rebootbtn);
 
         AHRS.setOnClickListener(new View.OnClickListener() {
 
@@ -86,6 +87,16 @@ public InterfaceDataCommunicator interfaceDataCommunicator;
 
             }
         });
+
+        REBOOT.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                interfaceDataCommunicator.updateData(Ip, port, 1, 0, 0, 0, 0, 0, 0, (float) 0.5, 8);
+
+            }
+        });
+
         textResponse = (TextView) myView.findViewById(R.id.response);
 
 
@@ -113,10 +124,16 @@ public InterfaceDataCommunicator interfaceDataCommunicator;
         public void onClick(View arg0) {
 
     Ip = editTextAddress.getText().toString();
-    port = Integer.parseInt(editTextPort.getText().toString());
+            //port = Integer.parseInt(editTextPort.getText().toString());
+
+
+            try {
+                port = Integer.parseInt(editTextPort.getText().toString());
+            } catch(NumberFormatException e) {
+// do nothing
+            }
 
             interfaceDataCommunicator.updateData(Ip, port, 1, 0, 0, 0, 0, 0, 0, (float) 0.5, id);
-
 
         }
     };

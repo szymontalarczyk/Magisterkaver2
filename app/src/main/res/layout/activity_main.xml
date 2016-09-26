@@ -32,7 +32,6 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"></fragment>
 
-
     <fragment class="com.example.szymon.messor.ManualControll"
         android:id="@+id/ManualControllFragment"
         android:layout_height="match_parent"

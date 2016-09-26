@@ -28,7 +28,7 @@ public class ManualControll extends Fragment implements AdapterView.OnItemSelect
     View myView;
     Spinner spinner;
     ArrayAdapter adapter;
-    EditText x, y, z, alfa, beta, gamma, speed;
+    TextView x, y, z, alfa, beta, gamma, speed;
     FloatingActionButton sendbutton_manual;
     FloatingActionButton emergency_manual;
 
@@ -45,7 +45,7 @@ public class ManualControll extends Fragment implements AdapterView.OnItemSelect
     int port;
 
 
-    TextView textdata1, textdata2, textdata3, textdata4, textdata5, textdata6;
+    TextView textdata1, textdata2, textdata3, textdata4, textdata5, textdata6, textdata7;
 
     @Override
     public void onAttach(Activity activity) {
@@ -67,13 +67,13 @@ public class ManualControll extends Fragment implements AdapterView.OnItemSelect
         adapter = ArrayAdapter.createFromResource(this.getActivity(), R.array.lista_komend_sterowanie_manualne, android.R.layout.simple_list_item_multiple_choice);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        x = (EditText) myView.findViewById(R.id.setX);
-        y = (EditText) myView.findViewById(R.id.setY);
-        z = (EditText) myView.findViewById(R.id.setZ);
-        alfa = (EditText) myView.findViewById(R.id.setAlfa);
-        beta = (EditText) myView.findViewById(R.id.setBeta);
-        gamma = (EditText) myView.findViewById(R.id.setGamma);
-        speed = (EditText) myView.findViewById(R.id.setSpeed);
+        x = (TextView) myView.findViewById(R.id.setX);
+        y = (TextView) myView.findViewById(R.id.setY);
+        z = (TextView) myView.findViewById(R.id.setZ);
+        alfa = (TextView) myView.findViewById(R.id.setAlfa);
+        beta = (TextView) myView.findViewById(R.id.setBeta);
+        gamma = (TextView) myView.findViewById(R.id.setGamma);
+        speed = (TextView) myView.findViewById(R.id.setSpeed);
 
         plusx = (Button) myView.findViewById(R.id.plusX);
         plusy = (Button) myView.findViewById(R.id.plusY);
@@ -98,6 +98,7 @@ public class ManualControll extends Fragment implements AdapterView.OnItemSelect
         textdata4 = (TextView) myView.findViewById(R.id.textAlfa);
         textdata5 = (TextView) myView.findViewById(R.id.textBeta);
         textdata6 = (TextView) myView.findViewById(R.id.textGamma);
+        textdata7 = (TextView) myView.findViewById(R.id.textSpeed);
 
         switch_auto = (Switch) myView.findViewById(R.id.auto_switch_manual);
 
@@ -130,15 +131,14 @@ public class ManualControll extends Fragment implements AdapterView.OnItemSelect
 
         float zero = (float) 0.0;
 
-        x.setText(String.format("%.2f", zero));
-        y.setText(String.format("%.2f", zero));
-        z.setText(String.format("%.2f", zero));
-        alfa.setText(String.format("%.2f", zero));
-        beta.setText(String.format("%.2f", zero));
-        gamma.setText(String.format("%.2f", zero));
-        speed.setText(String.format("%.2f", 0.04));
+        x.setText(String.format("%.2f", zero)+" m");
+        y.setText(String.format("%.2f", zero)+" m");
+        z.setText(String.format("%.2f", zero)+" m");
+        alfa.setText(String.format("%.2f", zero)+" rad");
+        beta.setText(String.format("%.2f", zero)+" rad");
+        gamma.setText(String.format("%.2f", zero)+" rad");
+        speed.setText(String.format("%.2f", 0.1*100)+ " %");
 
-        speed_send=(float)0.04;
 
         return myView;
     }
@@ -150,27 +150,36 @@ public class ManualControll extends Fragment implements AdapterView.OnItemSelect
         Toast.makeText(this.getActivity(), "Wybrano: " + selected_option.getText(), Toast.LENGTH_SHORT).show();
         zeroes();
         if (spinner.getSelectedItemPosition() > 1) {
+            beta_send=(float)0.1;
+            beta.setText(String.format("%.2f", beta_send*100));
             offset_leg = 1;
             textdata1.setText("Wybór nogi");
-            textdata2.setText("Przesunięcie X [m]");
-            textdata3.setText("Przesunięcie Y [m]");
-            textdata4.setText("Przesunięcie Z [m]");
-            textdata5.setVisibility(View.GONE);
+            textdata2.setText("Kąt Alfa ");
+            textdata3.setText("Kąt Beta ");
+            textdata4.setText("Kąt Gamma ");
+            textdata5.setVisibility(View.VISIBLE);
+            textdata5.setText("Prędkość [%]");
             textdata6.setVisibility(View.GONE);
-            beta.setVisibility(View.GONE);
+            beta.setVisibility(View.VISIBLE);
             gamma.setVisibility(View.GONE);
-            plusbeta.setVisibility(View.GONE);
+            plusbeta.setVisibility(View.VISIBLE);
             plusgamma.setVisibility(View.GONE);
-            minusbeta.setVisibility(View.GONE);
+            minusbeta.setVisibility(View.VISIBLE);
             minusgamma.setVisibility(View.GONE);
+            speed.setVisibility(View.GONE);
+            plusspeed.setVisibility(View.GONE);
+            minusspeed.setVisibility(View.GONE);
+            textdata7.setVisibility(View.GONE);
+            speed_send=0;
 
-
-        } else {
+        }
+        else {
             offset_leg = offset;
-            textdata1.setText("Przesunięcie X [m]");
-            textdata2.setText("Przesunięcie Y [m]");
-            textdata3.setText("Przesunięcie Z [m]");
-            textdata4.setText("Obrót wokół osi X [rad]");
+            textdata1.setText("Przesunięcie X ");
+            textdata2.setText("Przesunięcie Y ");
+            textdata3.setText("Przesunięcie Z ");
+            textdata4.setText("Obrót wokół osi X ");
+            textdata5.setText("Obrót wokół osi Y ");
             textdata5.setVisibility(View.VISIBLE);
             textdata6.setVisibility(View.VISIBLE);
             beta.setVisibility(View.VISIBLE);
@@ -179,7 +188,12 @@ public class ManualControll extends Fragment implements AdapterView.OnItemSelect
             plusgamma.setVisibility(View.VISIBLE);
             minusbeta.setVisibility(View.VISIBLE);
             minusgamma.setVisibility(View.VISIBLE);
-
+            textdata7.setVisibility(View.VISIBLE);
+            plusspeed.setVisibility(View.VISIBLE);
+            minusspeed.setVisibility(View.VISIBLE);
+            speed.setVisibility(View.VISIBLE);
+            speed_send=(float)0.1;
+            beta_send=(float)0.0;
 
         }
     }
@@ -268,13 +282,21 @@ public class ManualControll extends Fragment implements AdapterView.OnItemSelect
                 interfaceDataCommunicator.updateData(Ip, port, flaga, x_send, y_send, z_send, alfa_send, beta_send, gamma_send, speed_send, id);
 
             }
-            x.setText(String.format("%.2f", x_send));
-            y.setText(String.format("%.2f", y_send));
-            z.setText(String.format("%.2f", z_send));
-            alfa.setText(String.format("%.2f", alfa_send));
-            beta.setText(String.format("%.2f", beta_send));
-            gamma.setText(String.format("%.2f", gamma_send));
-            speed.setText(String.format("%.2f", speed_send));
+
+            x.setText(String.format("%.2f", x_send) +" m");
+            y.setText(String.format("%.2f", y_send)+" m");
+            z.setText(String.format("%.2f", z_send)+" m");
+            alfa.setText(String.format("%.2f", alfa_send)+" rad");
+            if (spinner.getSelectedItemPosition() > 1) {
+                beta.setText(String.format("%.2f", beta_send*100)+" %");
+            }
+            else
+            {
+                beta.setText(String.format("%.2f", beta_send)+" rad");
+
+            }
+            gamma.setText(String.format("%.2f", gamma_send)+" rad");
+            speed.setText(String.format("%.2f", speed_send*100)+" %");
 
 
         }
@@ -295,12 +317,12 @@ public class ManualControll extends Fragment implements AdapterView.OnItemSelect
 
     void zeroes() {
 
-        x.setText("0,00");
-        y.setText("0,00");
-        z.setText("0,00");
-        alfa.setText("0,00");
-        beta.setText("0,00");
-        gamma.setText("0,00");
+        x.setText("0,00 m");
+        y.setText("0,00 m");
+        z.setText("0,00 m");
+        alfa.setText("0,00 rad");
+        beta.setText("0,00 rad");
+        gamma.setText("0,00 rad");
 
         x_send = 0;
         y_send = 0;

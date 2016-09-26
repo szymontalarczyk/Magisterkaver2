@@ -64,11 +64,10 @@ send_values();
     float linear_acceleration[]=new float[3];
     Spinner spinner_acc,spinner_controll_mode;
     ArrayAdapter adapter_acc,adapter_mode;
-    boolean auto = false;
     EditText speed_acc;
     FloatingActionButton sendbutton_acc;
     FloatingActionButton emergency_acc;
-    TextView obrot_text,pitch_text,roll_text,wartosci_text,przysp_text;
+    TextView obrot_text,pitch_text,roll_text,acc_text;
     float pitch;
     float roll;
     static final double PI = 3.14159265358979323846;
@@ -97,7 +96,7 @@ Switch pitchblock,rollblock;
         myView = inflater.inflate(R.layout.accelerometr, container, false);
 
         spinner_acc = (Spinner)myView.findViewById(R.id.spinner_acc);
-        adapter_acc = ArrayAdapter.createFromResource(this.getActivity(),R.array.lista_komend_sterowanie_manualne,android.R.layout.simple_list_item_multiple_choice);
+        adapter_acc = ArrayAdapter.createFromResource(this.getActivity(),R.array.lista_komend_akcelerometr,android.R.layout.simple_list_item_multiple_choice);
         spinner_acc.setAdapter(adapter_acc);
 
         spinner_controll_mode=(Spinner)myView.findViewById(R.id.spinner_controll_mode);
@@ -119,6 +118,7 @@ Switch pitchblock,rollblock;
 
         pitchblock=(Switch) myView.findViewById(R.id.pitch_block);
         rollblock=(Switch)myView.findViewById(R.id.roll_block);
+acc_text=(TextView)myView.findViewById(R.id.przysp_text);
 
 
         mSensorManager.registerListener(this, mAccelerometr,
@@ -253,7 +253,6 @@ Switch pitchblock,rollblock;
 
 
 
-
 }
 
 
@@ -284,8 +283,12 @@ Switch pitchblock,rollblock;
 
     void send_values()
     {
-        flaga = spinner_acc.getSelectedItemPosition() + 1;
-
+        if(spinner_acc.getSelectedItemPosition()<2) {
+            flaga = spinner_acc.getSelectedItemPosition() + 1;
+        }
+        else{
+            flaga=spinner_acc.getSelectedItemPosition()+22;
+        }
             x_send = (float) (pitch*0.05);
             y_send = (float) (roll*0.05);
            // z_send = Float.parseFloat(axisZ.getText().toString());
@@ -308,6 +311,7 @@ Switch pitchblock,rollblock;
             gamma_send =0;
             speed_send = Float.parseFloat(speed_acc.getText().toString());
         }
+        speed_send=speed_send/100;
         interfaceDataCommunicator.updateData(Ip, port, flaga, x_send, y_send, z_send, alfa_send, beta_send, gamma_send, speed_send, id);
     }
 
